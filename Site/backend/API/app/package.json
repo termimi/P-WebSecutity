@@ -2,9 +2,9 @@
   "name": "mon_application",
   "version": "1.0.0",
   "description": "Une application Node.js",
-  "main": "server.js",
+  "main": "app.mjs",
   "scripts": {
-    "start": "nodemon server.js -L"
+    "start": "nodemon app.mjs -L"
   },
   "dependencies": {
     "express": "^4.19.1",
