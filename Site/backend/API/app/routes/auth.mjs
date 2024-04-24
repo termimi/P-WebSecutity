@@ -1,19 +1,9 @@
 import {dbConnection} from "../db/dbConnexion.mjs";
 import express from "express";
+import { databaseConnection } from "../db/dbConnexion.mjs";
 
 const router = express();
 
-const databaseConnection = async (req,res,next) => {
-    try{
-        // met la connexion à la db dans la variable connection de req
-        req.connectionToDB = await dbConnection();
-        next();
-    }
-    catch(error){
-        console.error("Impossible de se connecter à la base de donnée",error);
-        res.status(500).json({error:"internal Server Error"})
-    }
-};
 
 router.post('/', databaseConnection, async (req,res) =>{
     // prend les infos du body

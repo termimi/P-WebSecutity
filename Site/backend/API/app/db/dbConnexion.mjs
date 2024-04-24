@@ -18,3 +18,15 @@ export const dbConnection = async() => {
         throw error;
     }
 };
+export const databaseConnection = async (req,res,next) => {
+    try{
+        // met la connexion à la db dans la variable connection de req
+        req.connectionToDB = await dbConnection();
+        next();
+    }
+    catch(error){
+        console.error("Impossible de se connecter à la base de donnée",error);
+        res.status(500).json({error:"internal Server Error"})
+    }
+};
+

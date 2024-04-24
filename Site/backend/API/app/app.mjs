@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from "./routes/auth.mjs";
+import createRouter from "./routes/createUser.mjs"
 
 
 const app = express();
@@ -10,6 +11,7 @@ app.get("/", (req, res) => {
     res.send("API REST of a eShopWebsite !");
 });
 app.use('/auth',authRouter);
+app.use('/create',createRouter);
 
 // Démarrage du serveur
 app.listen(port, () => {
