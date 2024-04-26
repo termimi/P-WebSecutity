@@ -17,6 +17,9 @@ services:
             - "6033:3306"
         volumes:
             - dbdata:/var/lib/mysql
+            - ./sqlScript:/sqlScript
+        # Initialise la db a partir du fichier .sql
+        command: --init-file /sqlScript/db_webSecurity.sql
       
     phpmyadmin:
         image: phpmyadmin:5.2.0
