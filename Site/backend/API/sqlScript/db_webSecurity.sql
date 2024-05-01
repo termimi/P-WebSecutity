@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 
 --
 -- Base de données : `db_webSecurity`
+CREATE DATABASE IF NOT EXISTS db_webSecurity;
 --
 USE db_webSecurity;
 -- --------------------------------------------------------
