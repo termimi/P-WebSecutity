@@ -1,6 +1,7 @@
 import express from "express";
 import authRouter from "./routes/auth.mjs";
 import createRouter from "./routes/createUser.mjs"
+import userRouter from "./routes/users.mjs"
 
 
 const app = express();
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
 });
 app.use('/auth',authRouter);
 app.use('/create',createRouter);
+app.use('/users',userRouter);
 
 // Démarrage du serveur
 app.listen(port, () => {

@@ -8,6 +8,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from "url";
 
+let token = ""
+
 
 const getPrivateKeyFromFolder =() =>{
     // obtient le dossier ou se trouve l'app
@@ -63,7 +65,7 @@ router.post('/', databaseConnection, async (req,res) =>{
         if(dbResponse.length > 0){
             // todo ajouter admin dans le payload
             //Token
-            const token = jwt.sign({userName: dbResponse[0].useNickName, admin: dbResponse[0].useAdmin },privateKey,{ algorithm: 'RS256' },{ expiresIn: 60 * 60 });
+            token = jwt.sign({useNickName: dbResponse[0].useNickName, useAdmin: dbResponse[0].useAdmin },privateKey,{ algorithm: 'RS256' },{ expiresIn: 60 * 60 });
             res.status(200).json({message:"authentification réuissie" ,token: token});
         }
         else{
@@ -77,3 +79,4 @@ router.post('/', databaseConnection, async (req,res) =>{
     }
 });
 export default router;
+export { getPublicKeyFromFolder };

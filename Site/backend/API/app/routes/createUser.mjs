@@ -14,6 +14,9 @@ const getLengthOfSalt =() =>{
 router.post('/',databaseConnection,async(req,res) =>{
     // récupère les infos du body
     let { username, password,admin } = req.body;
+    if(admin){
+        admin = 1;
+    }
     const lengthOfSalt = getLengthOfSalt();
     const salt = getSalt(lengthOfSalt);
     // création d'un utilisateur non admin dans le cas ou le champs n'est pas définis
