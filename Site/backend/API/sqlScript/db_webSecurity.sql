@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db:3306
--- Généré le : ven. 26 avr. 2024 à 13:49
+-- Généré le : mar. 07 mai 2024 à 17:48
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.0.27
 
@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS db_webSecurity;
 --
 USE db_webSecurity;
+
 -- --------------------------------------------------------
 
 --
@@ -31,7 +32,9 @@ USE db_webSecurity;
 CREATE TABLE `t_users` (
   `useID` int NOT NULL,
   `useNickName` varchar(255) NOT NULL,
-  `usePassWord` varchar(255) NOT NULL
+  `usePassWord` varchar(255) NOT NULL,
+  `useAdmin` tinyint(1) NOT NULL,
+  `useSalt` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -52,7 +55,7 @@ ALTER TABLE `t_users`
 -- AUTO_INCREMENT pour la table `t_users`
 --
 ALTER TABLE `t_users`
-  MODIFY `useID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `useID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
