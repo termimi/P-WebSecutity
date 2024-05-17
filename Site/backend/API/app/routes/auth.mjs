@@ -10,6 +10,18 @@ import { fileURLToPath } from "url";
 
 let token = ""
 
+const getCertificateFromFolder =() =>{
+    // obtient le dossier ou se trouve l'app
+    const _fileName = fileURLToPath(import.meta.url);
+    const _dirname = path.dirname(_fileName);
+    // obtient le chemin du dossier
+    const folderPath = path.join(_dirname, '../keys');
+    // obtient le chemin du fichier
+    const filePath = path.join(folderPath,"/server.crt");
+    // lis le fichier
+    const privateKey = fs.readFileSync(filePath);
+    return privateKey;
+}
 
 const getPrivateKeyFromFolder =() =>{
     // obtient le dossier ou se trouve l'app
@@ -79,4 +91,4 @@ router.post('/', databaseConnection, async (req,res) =>{
     }
 });
 export default router;
-export { getPublicKeyFromFolder };
+export { getPublicKeyFromFolder,getPrivateKeyFromFolder,getCertificateFromFolder };

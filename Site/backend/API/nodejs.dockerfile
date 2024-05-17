@@ -11,3 +11,5 @@ COPY app/ ./
 RUN npm install
 EXPOSE 8080
 CMD ["nodemon", "app.mjs","mysql2","jsonwebtoken"]
+
+
