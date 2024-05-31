@@ -22,7 +22,7 @@ router.get('/:name',databaseConnection,async(req,res) =>{
         res.status(403).json({ error: "Vous n'avez pas les permission d'accéder à cette ressource" });
     }
     else{
-        const infoOfUserString = 'SELECT * FROM t_users WHERE useNickName = ?'
+        const infoOfUserString = 'SELECT useID, useNickName FROM t_users WHERE useNickName = ?'
         try{
             const [dbResponse] = await req.connectionToDB.execute(infoOfUserString, [nameOfUser]);
             // affiche les donnée de l'utilisateur
